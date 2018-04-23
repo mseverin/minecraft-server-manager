@@ -18,31 +18,36 @@ function install_error() {
 ### NOTE: some of the below functions MUST be overloaded due to system-specific installs
 
 function config_installation() {
-    install_log "Configure installation"
-    echo -n "Install directory [${msm_dir}]: "
-    read input
-    if [ ! -z "$input" ]; then
-        msm_dir="$input"
-    fi
+    #remove questions and just set constants
+    msm_dir=${msm_dir}
+    msm_user="minecraft"
+    msm_user_system=true
+    
+    #install_log "Configure installation"
+    #echo -n "Install directory [${msm_dir}]: "
+    #read input
+    #if [ ! -z "$input" ]; then
+    #    msm_dir="$input"
+    #fi
 
-    echo -n "New server user to be created [${msm_user}]: "
-    read input
-    if [ ! -z "$input" ]; then
-        msm_user="$input"
-    fi
+    #echo -n "New server user to be created [${msm_user}]: "
+    #read input
+    #if [ ! -z "$input" ]; then
+    #    msm_user="$input"
+    #fi
 
-    echo -n "Add new user as system account? [y/N]: "
-    read answer
-    if [[ $answer != "y" ]]; then
-        msm_user_system=true
-    fi
+    #echo -n "Add new user as system account? [y/N]: "
+    #read answer
+    #if [[ $answer != "y" ]]; then
+    #    msm_user_system=true
+    #fi
 
-    echo -n "Complete installation with these values? [y/N]: "
-    read answer
-    if [[ $answer != "y" ]]; then
-        echo "Installation aborted."
-        exit 0
-    fi
+    #echo -n "Complete installation with these values? [y/N]: "
+    #read answer
+    #if [[ $answer != "y" ]]; then
+    #    echo "Installation aborted."
+    #    exit 0
+    #fi
 }
 
 # Runs a system software update to make sure we're using all fresh packages
