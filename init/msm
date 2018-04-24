@@ -1651,7 +1651,7 @@ server_backup() {
 	# Zip up the server directory
 	file_name="${SERVER_BACKUP_PATH[$1]}/$(date "+%F-%H-%M-%S").zip"
 	as_user "${SERVER_USERNAME[$1]}" "mkdir -p \"${SERVER_BACKUP_PATH[$1]}\" && cd \"$SETTINGS_SERVER_STORAGE_PATH\" && zip ${zip_flags} \"${file_name}\" \"${SERVER_NAME[$1]}\""
-	as_user "${SERVER_USERNAME[$1]}" "aws s3 cp \"${file_name}\" \"s3://severin-minecraft-backups/testname.zip\""
+	as_user "${SERVER_USERNAME[$1]}" "cd \"$SETTINGS_SERVER_STORAGE_PATH\" && aws s3 cp \"${file_name}\" \"s3://severin-minecraft-backups/testname.zip\""
 	echo "Done."
 }
 
